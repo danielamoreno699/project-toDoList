@@ -30,7 +30,24 @@ const arrayToDoList = [
 
 ];
 
-// arrayToDoList.forEach((toDo)=> {
-//     const ul = document.getElementById('ul-todo');
+// const ul = document.getElementById('items');
+// const li = document.createElement('li');
 
-// })
+const displayLi = () => {
+  arrayToDoList.forEach((todo) => {
+     const ul = document.getElementById('items');
+     const li = document.createElement('li');
+    li.classList.add('flex-between');
+
+    li.innerHTML = `<div class="container-input">
+    <input id="${todo.id}" type="checkbox" class="checkbox"checked>
+    <label for="item1">${todo.desc}</label>
+            
+    </div>
+    <img class="w4"src="../assets/three-dots-svgrepo-com.svg" alt="">`;
+
+    //ul.innerHTML += liContent;
+    ul.appendChild(li);
+ })
+}
+displayLi();

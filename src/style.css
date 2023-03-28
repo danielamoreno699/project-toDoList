@@ -1,13 +1,50 @@
+
+h3{
+    margin:0
+}
+
 .todo-list{
+    padding: 1rem;
     max-width: 450px;
     margin: 0 auto;
     border-top: 5px solid #435757;
     background-color: rgba(255, 255, 255, .2);
     box-shadow: 0 0 20px rgba(0, 0, 0, .1);
     user-select: none;
+    height: auto;
 }
 
 .items{
     display:flex;
     flex-direction: column;
+    list-style-type: none;
+     padding: 0; 
+}
+
+#myInput{
+    height: 42px;
+    width: 98%;
+    border: 0;
+}
+
+.w4{
+    width: 4%;
+
+}
+
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+hr{
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color:#ccccc7;
+    height: 1px;
+}
+
+li{
+    margin: 2% 0rem 2%;
 }
