@@ -25,6 +25,11 @@ h3 {
   height: 42px;
   width: 98%;
   border: 0;
+  outline: none;
+}
+
+#myInput:focus-visible{
+    outline: none;
 }
 
 .w4 {
