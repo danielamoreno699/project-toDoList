@@ -123,9 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('items').addEventListener('click', (e) => {
-  Store.removeList(e.target);
-  e.preventDefault();
-});
+    if (e.target.classList.contains('checkbox')) {
+      return;
+    }
+    Store.removeList(e.target);
+    e.preventDefault();
+  });
+  
 
 document.getElementById('btn-clearAll').addEventListener('click', () => {
   if (Store.getToDoList().length >= 1) {
