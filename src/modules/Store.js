@@ -13,10 +13,11 @@ class Store {
 
   static displaytoDolist() {
     const todo = Store.getToDoList();
+    const ui = new UI();
     todo.forEach((todoItem, index) => {
-      const ui = new UI();
       ui.displayToDo(todoItem, index);
     });
+    ui.registerEventListeners();
   }
 
   static addList(todoItem) {

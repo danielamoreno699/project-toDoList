@@ -31,21 +31,20 @@ class UI {
     }
 
     updateCheck = (e) => {
-      if (e.target.checked === true) {
-        e.target.nextElementSibling.classList.add('completed');
-      }
-
-      if (!e.target.checked) {
-        e.target.nextElementSibling.classList.remove('completed');
+      const index = e.target.id;
+      const label = document.querySelector(`label[for="${index}"]`);
+      if (e.target.checked) {
+        label.classList.add('completed');
+      } else {
+        label.classList.remove('completed');
       }
     };
 
-    registerEventListeners = () => {
-      const checkboxes = document.querySelectorAll('.checkbox');
-      checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener('click', this.updateCheck);
-      });
-    }
+      registerEventListeners = () => {
+        const checkboxes = document.querySelectorAll('.checkbox');
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener('click', this.updateCheck);
+        });
+      }
 }
-
 export default UI;
