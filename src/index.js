@@ -1,15 +1,4 @@
-//import _ from 'lodash';
 import './style.css';
-
-// function component() {
-//   const element = document.createElement('div');
-
-//   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-//   element.classList.add('hello');
-
-//   return element;
-// }
-// document.body.appendChild(component());
 
 const arrayToDoList = [
   {
@@ -30,13 +19,10 @@ const arrayToDoList = [
 
 ];
 
-// const ul = document.getElementById('items');
-// const li = document.createElement('li');
-
 const displayLi = () => {
   arrayToDoList.forEach((todo) => {
-     const ul = document.getElementById('items');
-     const li = document.createElement('li');
+    const ul = document.getElementById('items');
+    const li = document.createElement('li');
     li.classList.add('flex-between');
 
     li.innerHTML = `<div class="container-input">
@@ -44,10 +30,9 @@ const displayLi = () => {
     <label for="item1">${todo.desc}</label>
             
     </div>
-    <img class="w4"src="../assets/three-dots-svgrepo-com.svg" alt="">`;
+    <i class="fa-solid fa-trash-can" id="delete-task"></i>`;
 
-    //ul.innerHTML += liContent;
     ul.appendChild(li);
- })
-}
+  });
+};
 displayLi();

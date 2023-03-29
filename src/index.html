@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webpack Exercise</title>
-    <!-- <link rel="stylesheet" href="style.css">
-    <script src="./index.js" defer></script> -->
+    <script src="https://kit.fontawesome.com/6e8f4ae605.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
 
@@ -13,64 +13,30 @@
     <div id="myDIV" class="header">
         <div class="header-container flex-between">
         <h3>My To Do List</h3>
-        <img class="w4"src="../assets/refresh-svgrepo-com.svg" alt="refresh">
+        <i class="fas fa-sync"></i>
         </div>
         
         <hr>
        
+        <form class="flex-between">
+            <input type="text" id="myInput" placeholder="Title...">
+            <i class="fas fa-arrow-left"></i>
+        </form>
         
-        <input type="text" id="myInput" placeholder="Title...">
       
         <hr>
     </div>
 
     <ul class="items" id="items">
         
-        <!-- <li class="flex-between">
-
-            <div class="container-input">
-            <input id="item1" type="checkbox" class="checkbox"checked>
-            <label for="item1">Create a to-do list</label>
-            
-            </div>
-                <img class="w4"src="../assets/three-dots-svgrepo-com.svg" alt="">
-    
-        </li>
-        <hr>
-        <li class="flex-between"> -->
-
-            <!-- <div class="container-input">
-            <input id="item1" type="checkbox" class="checkbox"checked>
-            <label for="item1">Create a to-do list</label>
-            
-            </div>
-                <img class="w4"src="../assets/three-dots-svgrepo-com.svg" alt="">
-    
-        </li>
-        <hr>
-        <li class="flex-between">
-
-            <div class="container-input">
-            <input id="item1" type="checkbox" class="checkbox"checked>
-            <label for="item1">Create a to-do list</label>
-            
-            </div>
-                <img class="w4"src="../assets/three-dots-svgrepo-com.svg" alt="">
-    
-        </li>
-        <hr> -->
+  
    
     </ul>
+    <div class="btn-container">
+        <button class="btn" type="button"> clear completed tasks </button>
+    </div>
     
 
-
-    <!-- <ul class="ul-todo" id="ul-todo">
-        <li>Meet George</li>
-        <li>Buy eggs</li>
-        <li>Read a book</li>
-        <li>Organize office</l
-
-    </ul> -->
 </section>
 </body>
 </html>

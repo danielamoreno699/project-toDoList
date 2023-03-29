@@ -3,11 +3,11 @@
   <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
-  <h3><b>Book Collection</b></h3>
+  <h3><b>To do list</b></h3>
 
 </div>
 
-# [Book Collection]
+# [to do list]
 
 <!-- TABLE OF CONTENTS -->
 
@@ -36,7 +36,7 @@
 
 # 📖 [Book Collection] <a name="about-project"></a>
 
-**[Book Collection]** this is project displays a list a books when user submits the form
+**[to do list]** 
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -104,17 +104,11 @@ N/A
 
 ### Deployment
 
-You can deploy this project using:
-
-GitHub pages
+You can deploy this project using: webpack
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AUTHORS -->
-
 ## 👷‍♂️ Author <a name="authors"></a>
-
-
 
 👷‍♂️ **daniela**
 
@@ -125,17 +119,15 @@ GitHub pages
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Payment]**
+- [ ] **[interactive functions]**
 - [ ] **[Footer]**
 - [ ] **[Profile picture]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
 
 ## 🤝 Contributing <a name="contributing"></a>
 
