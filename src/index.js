@@ -32,9 +32,11 @@ class Store {
     const li = target.parentElement.parentElement;
     const hr = li.nextElementSibling;
     const itemRemoved = parseInt(li.querySelector('label').htmlFor, 10);
-    if (!itemRemoved) {
+
+    if (itemRemoved === null) {
       return;
     }
+
     const todoList = Store.getToDoList();
     const findIndex = todoList.findIndex((index) => index === itemRemoved);
     todoList.splice(findIndex, 1);
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputList = document.getElementById('myInput');
   inputList.addEventListener('keypress', (event) => {
     const list = inputList.value;
-    if (!list) {
+    if (list === null) {
       return null;
     }
 
@@ -88,19 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   Store.displaytoDolist();
-});
 
-document.getElementById('items').addEventListener('click', (e) => {
-  if (e.target.classList.contains('checkbox')) {
-    return;
-  }
-  Store.removeList(e.target);
-  e.preventDefault();
-});
+  document.getElementById('items').addEventListener('click', (e) => {
+    if (e.target.classList.contains('checkbox')) {
+      return;
+    }
+    Store.removeList(e.target);
+    e.preventDefault();
+  });
 
-document.getElementById('btn-clearAll').addEventListener('click', () => {
-  if (Store.getToDoList().length >= 1) {
-    localStorage.clear();
-    window.location.reload();
-  }
+  document.getElementById('btn-clearAll').addEventListener('click', () => {
+    if (Store.getToDoList().length >= 1) {
+      localStorage.clear();
+      window.location.reload();
+    }
+  });
 });
