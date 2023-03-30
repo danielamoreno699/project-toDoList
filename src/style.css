@@ -28,8 +28,8 @@ h3 {
   outline: none;
 }
 
-#myInput:focus-visible{
-    outline: none;
+#myInput:focus-visible {
+  outline: none;
 }
 
 .w4 {
@@ -75,7 +75,23 @@ li {
   color: white;
 }
 
+.completed {
+  text-decoration: line-through;
+}
 
-.completed{
-    text-decoration: line-through;
+.todo-list-item {
+  outline: none;
+}
+
+.todo-list-item:focus-visible {
+  outline: none;
+}
+
+.outline {
+  outline: none;
+}
+
+input[type=text] {
+  outline: none;
+  border: none;
 }
