@@ -16,6 +16,7 @@ class ToDoList {
     }
   }
 
+  // function to addList
   addList =(todoItem) => {
     let todoList;
     if (localStorage.getItem('todoList') === null) {
@@ -27,19 +28,28 @@ class ToDoList {
     localStorage.setItem('todoList', JSON.stringify(todoList));
   }
 
-  remove =(target) => {
+  // function to remove
+  remove = (target) => {
     const li = target.parentElement.parentElement;
     const hr = li.nextElementSibling;
     const itemIndex = parseInt(li.querySelector('.delete').getAttribute('data-index'), 10);
-    const todoList = JSON.parse(localStorage.getItem('todoList'));
+    let todoList = JSON.parse(localStorage.getItem('todoList'));
     const itemToRemoveIndex = todoList.findIndex((item) => item.index === itemIndex);
     todoList.splice(itemToRemoveIndex, 1);
     localStorage.setItem('todoList', JSON.stringify(todoList));
     hr.remove();
     li.remove();
-  }
+
+    // Reorder indexes
+    todoList = todoList.map((item, index) => {
+      item.index = index + 1;
+      return item;
+    });
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+  };
 }
 
+// EventListening to add with List.
 document.addEventListener('DOMContentLoaded', () => {
   const ui = new UI();
   const inputList = document.getElementById('myInput');
@@ -61,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return null;
   });
 
+  // EventListening to remove list when clicking the trash icon.
   document.getElementById('items').addEventListener('click', (e) => {
     if (e.target.classList.contains('checkbox')) {
       return;
@@ -74,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Refresh the page with localStorage List
 document.addEventListener('DOMContentLoaded', () => {
   const ui = new UI();
   const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
