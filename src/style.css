@@ -28,8 +28,8 @@ h3 {
   outline: none;
 }
 
-#myInput:focus-visible{
-    outline: none;
+#myInput:focus-visible {
+  outline: none;
 }
 
 .w4 {
@@ -75,8 +75,6 @@ li {
   color: white;
 }
 
-
-.completed{
-    text-decoration: line-through;
+.completed {
+  text-decoration: line-through;
 }
-
