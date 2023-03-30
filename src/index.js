@@ -95,3 +95,23 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.displayToDo(newToDo);
   });
 });
+
+// eventListener to clear completed lists
+document.getElementById('btn-clearAll').addEventListener('click', () => {
+  console.log('click');
+  const todoList = JSON.parse(localStorage.getItem('todoList'));
+
+  let updatedTodos = todoList.filter((todo) => todo.completed !== true);
+  const todoItems = document.querySelectorAll('.todo-list-item');
+  todoItems.forEach((item) => {
+    if (item.classList.contains('completed')) {
+      item.classList.remove('completed');
+      item.remove();
+    }
+  });
+  updatedTodos = updatedTodos.map((item, index) => {
+    item.index = index + 1;
+    return item;
+  });
+  localStorage.setItem('todoList', JSON.stringify(updatedTodos));
+});
