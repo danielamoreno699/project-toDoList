@@ -78,3 +78,20 @@ li {
 .completed {
   text-decoration: line-through;
 }
+
+.todo-list-item{
+    outline: none;
+}
+
+.todo-list-item:focus-visible{
+    outline: none;
+}
+
+.outline{
+    outline: none
+}
+
+input[type=text] {
+    outline: none;
+    border: none;
+}
