@@ -96,22 +96,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// eventListener to clear completed lists
-document.getElementById('btn-clearAll').addEventListener('click', () => {
-  console.log('click');
-  const todoList = JSON.parse(localStorage.getItem('todoList'));
+// clear all
 
-  let updatedTodos = todoList.filter((todo) => todo.completed !== true);
-  const todoItems = document.querySelectorAll('.todo-list-item');
-  todoItems.forEach((item) => {
-    if (item.classList.contains('completed')) {
-      item.classList.remove('completed');
-      item.remove();
+document.getElementById('btn-clearAll').addEventListener('click', () => {
+  const todoList = JSON.parse(localStorage.getItem('todoList'));
+  const todoListContainer = document.getElementById('items');
+
+  todoListContainer.childNodes.forEach((child) => {
+    if (child.nodeName === 'LI') {
+      const inputEl = child.querySelector('input');
+      const isCompleted = inputEl.hasAttribute('checked');
+      if (!isCompleted) {
+        return;
+      }
+
+      child.remove();
     }
   });
-  updatedTodos = updatedTodos.map((item, index) => {
+  const newtodoList = todoList.filter((item) => item.completed !== true);
+
+  const reorderedList = newtodoList.map((item, index) => {
     item.index = index + 1;
     return item;
   });
-  localStorage.setItem('todoList', JSON.stringify(updatedTodos));
+  localStorage.setItem('todoList', JSON.stringify(reorderedList));
+
+  window.location.reload();
 });

@@ -54,6 +54,10 @@ li {
   margin: 2% 0 2%;
 }
 
+li:hover{
+    background-color: #5cea0a;
+}
+
 .btn-container {
   display: flex;
   justify-content: center;
