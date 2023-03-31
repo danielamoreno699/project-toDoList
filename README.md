@@ -34,9 +34,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [to do list] <a name="about-project"></a>
+# 📖 to do list <a name="about-project"></a>
 
-**[to do list]** 
+**to do list** 
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -105,6 +105,8 @@ N/A
 ### Deployment
 
 You can deploy this project using: webpack
+
+or click on the following link: https://neon-salamander-e52eca.netlify.app/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
