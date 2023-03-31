@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputList = document.getElementById('myInput');
   inputList.addEventListener('keypress', (event) => {
     const list = inputList.value;
-    if (list === null) {
+    if (list === null || '') {
       return null;
     }
 
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// clear all
+// clear all Btn
 
 document.getElementById('btn-clearAll').addEventListener('click', () => {
   const todoList = JSON.parse(localStorage.getItem('todoList'));
@@ -104,13 +104,16 @@ document.getElementById('btn-clearAll').addEventListener('click', () => {
 
   todoListContainer.childNodes.forEach((child) => {
     if (child.nodeName === 'LI') {
-      const inputEl = child.querySelector('input');
-      const isCompleted = inputEl.hasAttribute('checked');
-      if (!isCompleted) {
-        return;
-      }
+      const hr = child.nextElementSibling;
 
-      child.remove();
+      const inputEl2 = child.querySelector('.todo-list-item');
+
+      const isCompleted = inputEl2.classList.contains('completed');
+
+      if (isCompleted) {
+        child.remove();
+        hr.remove();
+      }
     }
   });
   const newtodoList = todoList.filter((item) => item.completed !== true);
@@ -120,6 +123,4 @@ document.getElementById('btn-clearAll').addEventListener('click', () => {
     return item;
   });
   localStorage.setItem('todoList', JSON.stringify(reorderedList));
-
-  window.location.reload();
 });

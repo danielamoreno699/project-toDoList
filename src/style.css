@@ -32,6 +32,7 @@ h3 {
   outline: none;
 }
 
+
 .w4 {
   width: 4%;
 }
@@ -51,7 +52,7 @@ hr {
 }
 
 li {
-  margin: 2% 0 2%;
+  height: 3rem;
 }
 
 li:hover{
@@ -89,6 +90,10 @@ li:hover{
 
 .todo-list-item:focus-visible {
   outline: none;
+}
+
+.todo-list-item:hover{
+    background-color: #5cea0a;
 }
 
 .outline {
