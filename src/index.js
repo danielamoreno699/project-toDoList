@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputList = document.getElementById('myInput');
   inputList.addEventListener('keypress', (event) => {
     const list = inputList.value;
-    if (list === null) {
+    if (list === null || '') {
       return null;
     }
 
@@ -73,15 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // EventListening to remove list when clicking the trash icon.
   document.getElementById('items').addEventListener('click', (e) => {
-    if (e.target.classList.contains('checkbox')) {
-      return;
+    if (e.target.id === 'delete-task') {
+      const todoList = new ToDoList();
+      todoList.remove(e.target);
+      e.preventDefault();
     }
-    if (e.target.classList.contains('todo-list-item')) {
-      return;
-    }
-    const todoList = new ToDoList();
-    todoList.remove(e.target);
-    e.preventDefault();
   });
 });
 
@@ -94,4 +90,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const newToDo = new ToDoList(item.desc, item.completed, item.index);
     ui.displayToDo(newToDo);
   });
+});
+
+// clear all Btn
+
+document.getElementById('btn-clearAll').addEventListener('click', () => {
+  const todoList = JSON.parse(localStorage.getItem('todoList'));
+  const todoListContainer = document.getElementById('items');
+
+  todoListContainer.childNodes.forEach((child) => {
+    if (child.nodeName === 'LI') {
+      const hr = child.nextElementSibling;
+
+      const inputEl2 = child.querySelector('.todo-list-item');
+
+      const isCompleted = inputEl2.classList.contains('completed');
+
+      if (isCompleted === true) {
+        child.remove();
+        hr.remove();
+      }
+    }
+  });
+  const newtodoList = todoList.filter((item) => item.completed !== true);
+
+  const reorderedList = newtodoList.map((item, index) => {
+    item.index = index + 1;
+    return item;
+  });
+  localStorage.setItem('todoList', JSON.stringify(reorderedList));
+  window.location.reload();
 });

@@ -10,7 +10,7 @@ class UI {
       const hr = document.createElement('hr');
       li.classList.add('flex-between');
 
-      li.innerHTML = `<div class="container-input">
+      li.innerHTML = `<div class="container-input  draggable" draggable="true"  >
         <input id="${todo.index}" type="checkbox" class="checkbox" ${todo.completed ? 'checked' : ''}>
         <input id="${todo.index}-inputTxt" class="todo-list-item ${todo.completed ? 'completed' : ''}" type="text" value="${todo.desc}">
       </div>
@@ -27,21 +27,21 @@ class UI {
       inputList.value = '';
     }
 
-    // add class completed to the checkbox input when is checked
     updateCheck = (e) => {
       const index = e.target.id;
       const input = document.querySelector(`input[id="${index}-inputTxt"].todo-list-item`);
-      if (e.target.checked) {
-        input.classList.add('completed');
-        const todoList = JSON.parse(localStorage.getItem('todoList'));
-        const todoItem = todoList.find((item) => item.index === Number(index));
-        todoItem.completed = true;
-        localStorage.setItem('todoList', JSON.stringify(todoList));
-      } else {
-        input.classList.remove('completed');
-        const todoList = JSON.parse(localStorage.getItem('todoList'));
-        const todoItem = todoList.find((item) => item.index === Number(index));
-        todoItem.completed = false;
+      const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+      const todoItem = todoList.find((item) => item.index === Number(index));
+
+      if (todoItem) {
+        if (e.target.checked) {
+          input.classList.add('completed');
+          todoItem.completed = true;
+        } else {
+          input.classList.remove('completed');
+          todoItem.completed = false;
+        }
+
         localStorage.setItem('todoList', JSON.stringify(todoList));
       }
     };
@@ -50,9 +50,10 @@ class UI {
       updateItem = (e) => {
         const index = e.target.id.split('-')[0];
         const { value } = e.target;
-        const todoList = JSON.parse(localStorage.getItem('todoList'));
+        const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
         const todoItem = todoList.find((item) => item.index === Number(index));
         todoItem.desc = value;
+        todoItem.completed = e.target.classList.contains('completed');
         localStorage.setItem('todoList', JSON.stringify(todoList));
       };
 
