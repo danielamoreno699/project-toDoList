@@ -1,4 +1,9 @@
 
+:root{
+    --border-color: #e3e5e4;
+    --background-color: #c3c7c8;
+}
+
 h3 {
   margin: 0;
 }
@@ -39,6 +44,8 @@ h3 {
 .flex-between {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
+  
 }
 
 hr {
@@ -96,6 +103,15 @@ input[type=text] {
   border: none;
 }
 
-li:hover input[type="text"]::before {
-  content: attr(value);
+
+
+.draggable-list {
+    border: 1px solid var(--border-color);
+    color: #34444f;
+    padding: 0;
+    width:100%;
+}
+
+.draggable-list.over {
+    background-color: #eaeaea;
 }

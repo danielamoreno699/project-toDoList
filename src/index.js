@@ -37,7 +37,7 @@ class ToDoList {
     const itemToRemoveIndex = todoList.findIndex((item) => item.index === itemIndex);
     todoList.splice(itemToRemoveIndex, 1);
     localStorage.setItem('todoList', JSON.stringify(todoList));
-    hr.remove();
+    //hr.remove();
     li.remove();
 
     // Reorder indexes
@@ -108,7 +108,7 @@ document.getElementById('btn-clearAll').addEventListener('click', () => {
 
       if (isCompleted === true) {
         child.remove();
-        hr.remove();
+        //hr.remove();
       }
     }
   });
