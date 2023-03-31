@@ -73,15 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // EventListening to remove list when clicking the trash icon.
   document.getElementById('items').addEventListener('click', (e) => {
-    if (e.target.classList.contains('checkbox')) {
-      return;
+    if (e.target.id === 'delete-task') {
+      const todoList = new ToDoList();
+      todoList.remove(e.target);
+      e.preventDefault();
     }
-    if (e.target.classList.contains('todo-list-item')) {
-      return;
-    }
-    const todoList = new ToDoList();
-    todoList.remove(e.target);
-    e.preventDefault();
   });
 });
 
@@ -110,7 +106,7 @@ document.getElementById('btn-clearAll').addEventListener('click', () => {
 
       const isCompleted = inputEl2.classList.contains('completed');
 
-      if (isCompleted) {
+      if (isCompleted === true) {
         child.remove();
         hr.remove();
       }
@@ -123,4 +119,5 @@ document.getElementById('btn-clearAll').addEventListener('click', () => {
     return item;
   });
   localStorage.setItem('todoList', JSON.stringify(reorderedList));
+  window.location.reload();
 });

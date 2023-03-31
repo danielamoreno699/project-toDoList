@@ -32,7 +32,6 @@ h3 {
   outline: none;
 }
 
-
 .w4 {
   width: 4%;
 }
@@ -53,10 +52,6 @@ hr {
 
 li {
   height: 3rem;
-}
-
-li:hover{
-    background-color: #5cea0a;
 }
 
 .btn-container {
@@ -92,10 +87,6 @@ li:hover{
   outline: none;
 }
 
-.todo-list-item:hover{
-    background-color: #5cea0a;
-}
-
 .outline {
   outline: none;
 }
@@ -103,4 +94,8 @@ li:hover{
 input[type=text] {
   outline: none;
   border: none;
+}
+
+li:hover input[type="text"]::before {
+  content: attr(value);
 }

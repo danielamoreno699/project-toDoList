@@ -10,7 +10,7 @@ class UI {
       const hr = document.createElement('hr');
       li.classList.add('flex-between');
 
-      li.innerHTML = `<div class="container-input">
+      li.innerHTML = `<div class="container-input  draggable" draggable="true"  >
         <input id="${todo.index}" type="checkbox" class="checkbox" ${todo.completed ? 'checked' : ''}>
         <input id="${todo.index}-inputTxt" class="todo-list-item ${todo.completed ? 'completed' : ''}" type="text" value="${todo.desc}">
       </div>
