@@ -140,7 +140,21 @@ class UI {
         parentOne.appendChild(elementTwo)
         parentTwo.appendChild(elementOne)
 
+         // update the todoList array with the new order of items
+  const indexOne = todoList.findIndex(item => item.index === fromIndex);
+  const indexTwo = todoList.findIndex(item => item.index === toIndex);
+
+  const temp = todoList[indexOne];
+  todoList[indexOne] = todoList[indexTwo];
+  todoList[indexTwo] = temp;
+
+  localStorage.setItem('todoList', JSON.stringify(todoList));
         
+ 
+
+  // Store the updated list in local storage
+
+     
 
 
       }
