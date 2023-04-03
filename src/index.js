@@ -40,6 +40,7 @@ class ToDoList {
     localStorage.setItem('todoList', JSON.stringify(todoList));
     //hr.remove();
     li.remove();
+    window.location.reload();
 
     // Reorder indexes
     todoList = todoList.map((item, index) => {
