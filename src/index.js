@@ -31,6 +31,7 @@ class ToDoList {
   // function to remove
   remove = (target) => {
     const li = target.parentElement.parentElement;
+    console.log('list', li)
     const hr = li.nextElementSibling;
     const itemIndex = parseInt(li.querySelector('.delete').getAttribute('data-index'), 10);
     let todoList = JSON.parse(localStorage.getItem('todoList'));
