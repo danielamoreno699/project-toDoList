@@ -4,9 +4,9 @@
   "description": "<div align=\"center\">\r   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->\r   <img src=\"murple_logo.png\" alt=\"logo\" width=\"140\"  height=\"auto\" />\r   <br/>",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack serve --open"
+    "start": "webpack serve --open",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,13 +20,18 @@
   },
   "homepage": "https://github.com/danielamoreno699/project-toDoList#readme",
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^29.5.0",
+    "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.27.5",
     "hint": "^7.1.6",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^29.5.0",
     "style-loader": "^3.3.2",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
