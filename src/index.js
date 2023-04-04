@@ -1,5 +1,4 @@
 import './style.css';
-
 import UI from './modules/UI.js';
 
 class ToDoList {
@@ -14,6 +13,15 @@ class ToDoList {
       this.index = todoList.length > 0 ? todoList[todoList.length - 1].index + 1 : lastIndex + 1;
       localStorage.setItem('lastIndex', JSON.stringify(this.index));
     }
+  }
+
+  // function to reorder index
+  reorderTodoList = (todoList) => {
+    const reorderedList = todoList.map((item, index) => {
+      item.index = index + 1;
+      return item;
+    });
+    return reorderedList;
   }
 
   // function to addList
@@ -33,19 +41,15 @@ class ToDoList {
     const li = target.parentElement.parentElement;
     const hr = li.nextElementSibling;
     const itemIndex = parseInt(li.querySelector('.delete').getAttribute('data-index'), 10);
-    let todoList = JSON.parse(localStorage.getItem('todoList'));
+    const todoList = JSON.parse(localStorage.getItem('todoList'));
     const itemToRemoveIndex = todoList.findIndex((item) => item.index === itemIndex);
     todoList.splice(itemToRemoveIndex, 1);
     localStorage.setItem('todoList', JSON.stringify(todoList));
     hr.remove();
     li.remove();
 
-    // Reorder indexes
-    todoList = todoList.map((item, index) => {
-      item.index = index + 1;
-      return item;
-    });
-    localStorage.setItem('todoList', JSON.stringify(todoList));
+    const reorderedList = this.reorderTodoList(todoList);
+    localStorage.setItem('todoList', JSON.stringify(reorderedList));
   };
 }
 
@@ -97,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('btn-clearAll').addEventListener('click', () => {
   const todoList = JSON.parse(localStorage.getItem('todoList'));
   const todoListContainer = document.getElementById('items');
+  const toDoList = new ToDoList();
 
   todoListContainer.childNodes.forEach((child) => {
     if (child.nodeName === 'LI') {
@@ -113,11 +118,8 @@ document.getElementById('btn-clearAll').addEventListener('click', () => {
     }
   });
   const newtodoList = todoList.filter((item) => item.completed !== true);
+  const reorderedList = toDoList.reorderTodoList(newtodoList);
 
-  const reorderedList = newtodoList.map((item, index) => {
-    item.index = index + 1;
-    return item;
-  });
   localStorage.setItem('todoList', JSON.stringify(reorderedList));
   window.location.reload();
 });
