@@ -5,14 +5,13 @@ class ToDoList {
   constructor(desc, completed = false, index) {
     this.desc = desc;
     this.completed = completed;
-    if (index !== undefined) {
-      this.index = index;
-    } else {
-      const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
-      const lastIndex = JSON.parse(localStorage.getItem('lastIndex')) || 0;
-      this.index = todoList.length > 0 ? todoList[todoList.length - 1].index + 1 : lastIndex + 1;
-      localStorage.setItem('lastIndex', JSON.stringify(this.index));
-    }
+    this.index = index ?? this.getNextIndex();
+  }
+
+  getNextIndex =() => {
+    const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+    const lastIndex = JSON.parse(localStorage.getItem('lastIndex')) || 0;
+    return todoList.length > 0 ? todoList[todoList.length - 1].index + 1 : lastIndex + 1;
   }
 
   // function to reorder index
