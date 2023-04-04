@@ -102,24 +102,26 @@ document.getElementById('btn-clearAll').addEventListener('click', () => {
   const todoList = JSON.parse(localStorage.getItem('todoList'));
   const todoListContainer = document.getElementById('items');
   const toDoList = new ToDoList();
+  const ui = new UI();
 
   todoListContainer.childNodes.forEach((child) => {
     if (child.nodeName === 'LI') {
       const hr = child.nextElementSibling;
-
       const inputEl2 = child.querySelector('.todo-list-item');
 
       const isCompleted = inputEl2.classList.contains('completed');
-
-      if (isCompleted === true) {
-        child.remove();
+      if (isCompleted) {
+        const parentElement = inputEl2.parentNode.parentNode;
+        parentElement.remove();
         hr.remove();
       }
     }
   });
+
   const newtodoList = todoList.filter((item) => item.completed !== true);
   const reorderedList = toDoList.reorderTodoList(newtodoList);
 
   localStorage.setItem('todoList', JSON.stringify(reorderedList));
-  window.location.reload();
+  todoListContainer.innerHTML = '';
+  reorderedList.forEach((item) => ui.displayToDo(item));
 });
