@@ -1,4 +1,3 @@
-import './style.css';
 import UI from './modules/UI.js';
 import ToDoList from './modules/ToDoList.js';
 
@@ -6,13 +5,13 @@ import ToDoList from './modules/ToDoList.js';
 export const handleKeyPress = (event) => {
   const ui = new UI();
   const inputList = document.getElementById('myInput');
-  const list = inputList.value;
-  if (list === null || '') {
+  const item = inputList.value;
+  if (item === null || '') {
     return null;
   }
 
   if (event.key === 'Enter') {
-    const newToDo = new ToDoList(list);
+    const newToDo = new ToDoList(item);
 
     ui.displayToDo(newToDo);
     newToDo.addList(newToDo);
