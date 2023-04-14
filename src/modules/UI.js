@@ -1,6 +1,7 @@
 class UI {
   constructor() {
     this.updateCheck = this.updateCheck.bind(this);
+    this.todoList = JSON.parse(localStorage.getItem('todoList')) || [];
   }
 
     // displays array of lists
@@ -22,16 +23,17 @@ class UI {
       this.registerEventListeners();
     };
 
+    // clear inputs
     clearFieldInput =() => {
       const inputList = document.getElementById('myInput');
       inputList.value = '';
     }
 
+    // update checkbox when selected
     updateCheck = (e) => {
       const index = e.target.id;
       const input = document.querySelector(`input[id="${index}-inputTxt"].todo-list-item`);
-      const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
-      const todoItem = todoList.find((item) => item.index === Number(index));
+      const todoItem = this.todoList.find((item) => item.index === Number(index));
 
       if (todoItem) {
         if (e.target.checked) {
@@ -42,7 +44,7 @@ class UI {
           todoItem.completed = false;
         }
 
-        localStorage.setItem('todoList', JSON.stringify(todoList));
+        localStorage.setItem('todoList', JSON.stringify(this.todoList));
       }
     };
 
@@ -50,11 +52,10 @@ class UI {
       updateItem = (e) => {
         const index = e.target.id.split('-')[0];
         const { value } = e.target;
-        const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
-        const todoItem = todoList.find((item) => item.index === Number(index));
+        const todoItem = this.todoList.find((item) => item.index === Number(index));
         todoItem.desc = value;
         todoItem.completed = e.target.classList.contains('completed');
-        localStorage.setItem('todoList', JSON.stringify(todoList));
+        localStorage.setItem('todoList', JSON.stringify(this.todoList));
       };
 
       // event registration for checkbox and input text. Updates values
