@@ -67,10 +67,7 @@ export const HandleClearAll = () => {
 
 document.getElementById('btn-clearAll').addEventListener('click', HandleClearAll);
 document.getElementById('items').addEventListener('click', handleDeleteTaskClick);
-document.addEventListener('DOMContentLoaded', () => {
-  const inputList = document.getElementById('myInput');
-  inputList.addEventListener('keypress', handleKeyPress);
-});
+document.getElementById('myInput').addEventListener('keypress', handleKeyPress);
 
 // Refresh the page with localStorage List
 document.addEventListener('DOMContentLoaded', () => {
