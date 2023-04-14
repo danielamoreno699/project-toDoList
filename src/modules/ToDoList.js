@@ -1,53 +1,45 @@
 class ToDoList {
-  constructor(desc, completed = false, index) {
+  constructor(desc, completed = false) {
+    this.todoList = JSON.parse(localStorage.getItem('todoList')) || [];
     this.desc = desc;
     this.completed = completed;
-    this.index = index ?? this.getNextIndex();
+    this.index = (this.todoList.length || 0) + 1;
   }
 
-    // function to get to next INDEX
-    getNextIndex =() => {
-      const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
-      const lastIndex = JSON.parse(localStorage.getItem('lastIndex')) || 0;
-      return todoList.length > 0 ? todoList[todoList.length - 1].index + 1 : lastIndex + 1;
-    }
+  // function to reorder index
+  reorderTodoList = (todoList) => {
+    const reorderedList = todoList.map((item, index) => {
+      item.index = index + 1;
+      return item;
+    });
+    return reorderedList;
+  };
 
-    // function to reorder index
-    reorderTodoList = (todoList) => {
-      const reorderedList = todoList.map((item, index) => {
-        item.index = index + 1;
-        return item;
-      });
-      return reorderedList;
-    }
+  // function to addList
+  addList = () => {
+    this.todoList.push({
+      desc: this.desc,
+      completed: this.completed,
+      index: this.index,
+    });
+    localStorage.setItem('todoList', JSON.stringify(this.todoList));
+    this.index += 1;
+  };
 
-    // function to addList
-    addList =(todoItem) => {
-      let todoList;
-      if (localStorage.getItem('todoList') === null) {
-        todoList = [];
-      } else {
-        todoList = JSON.parse(localStorage.getItem('todoList'));
-      }
-      todoList.push(todoItem);
-      localStorage.setItem('todoList', JSON.stringify(todoList));
-    }
+  // function to remove
+  remove = (target) => {
+    const li = target.parentElement.parentElement;
+    const hr = li.nextElementSibling;
+    const itemIndex = parseInt(li.querySelector('.delete').getAttribute('data-index'), 10);
+    const itemToRemoveIndex = this.todoList.findIndex((item) => item.index === itemIndex);
+    this.todoList.splice(itemToRemoveIndex, 1);
+    localStorage.setItem('todoList', JSON.stringify(this.todoList));
+    hr.remove();
+    li.remove();
 
-    // function to remove
-    remove = (target) => {
-      const li = target.parentElement.parentElement;
-      const hr = li.nextElementSibling;
-      const itemIndex = parseInt(li.querySelector('.delete').getAttribute('data-index'), 10);
-      const todoList = JSON.parse(localStorage.getItem('todoList'));
-      const itemToRemoveIndex = todoList.findIndex((item) => item.index === itemIndex);
-      todoList.splice(itemToRemoveIndex, 1);
-      localStorage.setItem('todoList', JSON.stringify(todoList));
-      hr.remove();
-      li.remove();
-
-      const reorderedList = this.reorderTodoList(todoList);
-      localStorage.setItem('todoList', JSON.stringify(reorderedList));
-    };
+    const reorderedList = this.reorderTodoList(this.todoList);
+    localStorage.setItem('todoList', JSON.stringify(reorderedList));
+  };
 }
 
 export default ToDoList;
