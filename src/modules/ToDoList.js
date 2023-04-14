@@ -16,9 +16,10 @@ class ToDoList {
   };
 
   // function to addList
-  addList = () => {
+  addList = (description) => {
+    description = this.desc;
     this.todoList.push({
-      desc: this.desc,
+      desc: description,
       completed: this.completed,
       index: this.index,
     });
