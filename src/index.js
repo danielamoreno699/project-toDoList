@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
   todoList.forEach((item) => {
-    const newToDo = new ToDoList(item.desc, item.completed, item.index);
+    const newToDo = new ToDoList(item.desc);
     ui.displayToDo(newToDo);
   });
 });
