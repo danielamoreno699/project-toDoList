@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // clear all Btn
 
 document.getElementById('btn-clearAll').addEventListener('click', () => {
+  const ui = new UI()
   const todoList = JSON.parse(localStorage.getItem('todoList'));
   const todoListContainer = document.getElementById('items');
 
@@ -121,5 +122,5 @@ document.getElementById('btn-clearAll').addEventListener('click', () => {
     return item;
   });
   localStorage.setItem('todoList', JSON.stringify(reorderedList));
-  window.location.reload();
+ reorderedList.forEach((item) => ui.displayToDo(item))
 });
