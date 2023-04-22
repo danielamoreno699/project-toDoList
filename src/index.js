@@ -122,5 +122,7 @@ document.getElementById('btn-clearAll').addEventListener('click', () => {
     return item;
   });
   localStorage.setItem('todoList', JSON.stringify(reorderedList));
+  todoListContainer.innerHTML = '';
  reorderedList.forEach((item) => ui.displayToDo(item))
 });
+
